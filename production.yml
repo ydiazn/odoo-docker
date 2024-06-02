@@ -1,0 +1,25 @@
+version: '3.1'
+services:
+  web:
+    image: odoo:${ODOO_VERSION:17}
+    depends_on:
+      - db
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./addons:/mnt/extra-addons
+  db:
+    build:
+      context: .
+      dockerfile: ./compose/production/postgres/Dockerfile
+      args:
+        POSTGRES_VERSION: ${POSTGRES_VERSION}
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data/pgdata
+      - odoo-backup-data:/backups
+    env_file:
+      - ./.envs/.production/.postgres
+volumes:
+  odoo-web-data:
+  odoo-backup-data:
+  odoo-db-data:
