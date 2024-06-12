@@ -1,27 +1,26 @@
 version: '3.1'
 services:
   web:
-    image: odoo:${ODOO_VERSION:17}
+    image: odoo:${ODOO_VERSION:-17}
     depends_on:
       - db
     ports:
-      - "${ODOO_WEB_PORT}:8069"
+      - ${ODOO_WEB_PORT:-8069}:8069
     volumes:
       - odoo-web-data:/var/lib/odoo
       - ./addons:/mnt/extra-addons
-    env_file:
-      - ./.envs/.local/.odoo
   db:
     build:
       context: .
       dockerfile: ./compose/production/postgres/Dockerfile
       args:
-        POSTGRES_VERSION: ${POSTGRES_VERSION}
+        POSTGRES_VERSION: ${POSTGRES_VERSION:-15}
     volumes:
-      - odoo-db-data:/var/lib/postgresql/data/pgdata
+      - odoo-db-data:/var/lib/postgresql/data
       - odoo-backup-data:/backups
     env_file:
       - ./.envs/.local/.postgres
+
 volumes:
   odoo-web-data:
   odoo-backup-data:

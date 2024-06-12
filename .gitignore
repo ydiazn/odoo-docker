@@ -1,1 +1,3 @@
-.envs
+.envs/.production/.postgres
+compose/production/odoo/config/odoo.conf
+compose/production/nginx/ssl/

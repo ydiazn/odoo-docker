@@ -1,8 +1,0 @@
-# PostgreSQL
-# ------------------------------------------------------------------------------
-POSTGRES_HOST=postgres
-POSTGRES_PORT=5432
-POSTGRES_DB=mobile
-POSTGRES_USER=uJbeUzTcfhEmSZOishTRTqNzYymSDFlM
-POSTGRES_PASSWORD=u1WsMSVT2r9bzsFFgXFyUNlnvCKdwo7Vbgyj6xI0dx3UNKfROMbRX1lEiuJ7GJlX
-PGDATA=/var/lib/postgresql/data/pgdata
